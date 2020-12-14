@@ -1,49 +1,125 @@
 input[type=text] {
     border-radius: 50px;
     border: none;
-    -webkit-box-shadow: 0px 0px 18px -3px rgba(0,0,0,0.5); 
-    box-shadow: 0px 0px 18px -3px rgba(0,0,0,0.5);
-    width: 400px;
+    -webkit-box-shadow: 0px 0px 2px rgba(0,0,0,0.3); 
+    box-shadow: 0px 0px 2px rgba(0,0,0,0.3);
+    width: 450pt;
+    height: 18pt;
     padding: 10px 30px;
+    font-size: 11pt;
+    outline: none;
 }
 
-#title {
-    font-size: 75px;
+input {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.logo {
     background: linear-gradient(315deg, rgba(15,106,214,1) 0%, rgba(91,155,230,1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin: 0px;
 }
 
-.search {
+#title {
+    font-size: 67pt;
+    margin: 15pt;
+}
+
+#minititle {
+    font-size: 25pt;
+    margin: 20pt;
+}
+
+#search {
     font-size: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 600px;
 }
 
-.search_results_container {
+#search_results_container {
     padding: 0 10%;
 }
 
 .result_container {
     background: transparent;
     height: 100px;
-    padding: 20px 40px;
+    padding: 20px 0;
     border-bottom: 1px solid rgba(0,0,0,0.1);
     display: flex;
     align-items: flex-start;
+    transition: 0.2s;
 }
 
 .result_container img {
-    height: 100%;
+    transition:  .2s;
+    margin-right: 10pt;
+}
+
+.result_container img:hover {
+    height: 80pt;
+    -webkit-box-shadow: 0px 0px 18px 5px rgba(0,0,0,0.3); 
+    box-shadow: 0px 0px 18px 5px rgba(0,0,0,0.3);
+}
+
+
+.result_container img {
     margin-right: 10px;
-    border-radius: 8px;
+    height: 100%;
 }
 
 .result_title {
     font-weight: bold;
     font-size: 25px;
+}
+
+#set_page_container {
+    padding: 0 10%;
+}
+
+#set_page_container img {
+    width: 40%;
+    margin-right: 30pt;
+}
+
+#set_title {
+    font-size: 30pt;
+}
+#set_id {
+    font-size: 22pt;
+    color: darkgrey;
+    margin-bottom: 5pt;
+}
+
+.set_info {
+    font-size: 14pt;
+    padding: 2pt 15pt;
+    border-radius: 30px;
+    width: fit-content;
+    margin-right: 8pt;
+}
+.set_info:hover {
+    color: white;
+    transition: 0.2s;
+}
+.set_info_cat {
+    border: solid 1.5px green;
+}
+.set_info_cat:hover {
+    background-color: green;
+}
+.set_info_year {
+    border: solid 1.5px red;
+}
+.set_info_year:hover {
+    background-color: red;
+}
+
+#set_info_div {
+    display: flex;
+}
+
+#set_bricks_div {
+    display: flex;
 }

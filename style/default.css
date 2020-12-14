@@ -4,10 +4,30 @@ body {
     margin: 0;
     height: 100vh;
     width: 100vw;
+    overflow-x: hidden;
 }
 
 a {
    text-decoration: none;
+   color: inherit;
+}
+
+p {
+    margin: 0;
+}
+
+img {
+    border-radius: 8px;
+}
+
+button {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
 }
 
 .menu {
@@ -19,24 +39,7 @@ a {
     margin: 20pt 30px;
 }
 
-
-.menu .title {
-    font-size: 35px;
-    background: linear-gradient(315deg, rgba(15,106,214,1) 0%, rgba(91,155,230,1) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin: 15pt;
-}
-
-.menu input[type=text] {
-    height: 10pt;
-    width: 300pt;
-    border-radius: 50px;
-    border: none;
-    -webkit-box-shadow: 0px 0px 18px -3px rgba(0,0,0,0.3); 
-    box-shadow: 0px 0px 18px -3px rgba(0,0,0,0.3);
-}
-
-#index {
-    overflow: hidden;
+::placeholder {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11pt;
 }

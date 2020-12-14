@@ -1,12 +1,11 @@
 <?php
     // Header
-    $title = "index";
     include 'include/header.php';
 
 ?>
 
-<div class="search">
-    <a href="index.php"><h1 id="title">Leegle</h1></a>
+<div id="search">
+    <a href="index.php"><h1 class="logo" id="title">Leegle</h1></a>
     
     <?php include 'include/searchbox.php'; ?>
 </div>

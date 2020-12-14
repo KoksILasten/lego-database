@@ -22,9 +22,10 @@
     }    
 ?>
 
-<div class='search_results_container'>
+<div id='search_results_container'>
     <?php displayResults($connection, $result); ?>
 </div>
 
-</body>
-</html>
+<?php
+    include "include/footer.php";
+?>

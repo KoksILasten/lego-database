@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/default.css">
+    <link rel="shortcut icon" type="image/png" href="assets/img/favicon.png">
     <title>Leegle</title>
 </head>
-<body <?php echo "id='" . $title . "'" ?> >
+<body>
