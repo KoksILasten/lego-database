@@ -10,6 +10,6 @@
 ?>
 
 <form method="post">
-        <input type="text" name="search-term" placeholder="Sök på set-ID eller Lego-set">
+        <input  autocomplete="off" type="text" name="search-term" placeholder="Sök på set-ID eller Lego-set">
         <input type="submit" name="search-submit" value="SÖK">
 </form>

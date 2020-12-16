@@ -1,5 +1,6 @@
 <?php
 
+// Display search results based on search term
 function displayResults($connection, $result) {
    if($result->num_rows === 0) {
       $searchTerm = $_GET['term'];
@@ -19,7 +20,7 @@ function displayResults($connection, $result) {
          $name = $row['Setname'];
          $year = $row['Year'];
          $catId = $row['CatID'];
-         $imagePath = findImage($connection, $setId, true);
+         $imagePath = findImage($connection, $setId, "S", true);
 
          echo "<a href='set.php?setId=" . $setId . "'><div class='result_container'>";
             echo "<img src='" . $imagePath  . "' alt='" . $name  . "'>";
@@ -36,7 +37,8 @@ function displayResults($connection, $result) {
 
 }
 
-function findImage($connection, $itemId, $getLarge) {
+// Find image path from corresponding item ID, small or large
+function findImage($connection, $itemId, $type, $getLarge) {
    $imagePathPrefix = "http://www.itn.liu.se/~stegu76/img.bricklink.com/";
 
    $images = mysqli_query($connection, "SELECT * FROM	images WHERE ItemID LIKE '" . $itemId . "'");
@@ -45,17 +47,17 @@ function findImage($connection, $itemId, $getLarge) {
       if ($getLarge) {
          // Get large image
          if ($row['has_largejpg']) {
-            return $imagePathPrefix . "SL/" . $itemId . ".jpg";
+            return $imagePathPrefix . $type . "L/" . $itemId . ".jpg";
          }
          else if ($row['has_largegif']) {
-            return $imagePathPrefix . "SL/" . $itemId . ".gif";
+            return $imagePathPrefix . $type . "L/" . $itemId . ".gif";
          }
       }
       if ($row['has_jpg']) {
-         return $imagePathPrefix . "S/" . $itemId . ".jpg";
+         return $imagePathPrefix . $type . "/" . $itemId . ".jpg";
       }
       else if ($row['has_gif']) {
-         return $imagePathPrefix . "S/" . $itemId . ".gif";
+         return $imagePathPrefix . $type . "/" . $itemId . ".gif";
       }
       else {
         return $imagePathPrefix . "noimage_small.png";
@@ -64,6 +66,7 @@ function findImage($connection, $itemId, $getLarge) {
    return "(notFound)";
 }
 
+// Find category name from its ID
 function findCategory($connection, $catId) {
    $categories = mysqli_query($connection, "SELECT * FROM categories WHERE CatID LIKE '" . $catId . "'");
 
@@ -71,6 +74,34 @@ function findCategory($connection, $catId) {
       return $row['Categoryname'];
    }
    return "(not found)";
+}
+
+function displayInventory($connection, $setId) {
+   $inventory = mysqli_query($connection, "SELECT * FROM	inventory WHERE SetID LIKE '" . $setId . "'");
+
+   // Search for the minifigs
+   while ($row = mysqli_fetch_array($inventory)) {
+      if ($row['ItemTypeId'] == "P") {
+         echo "PART: " . getPart($connection, $row['ItemTypeId']);
+      }
+      else {
+         echo "MINIFIG: " . getMinifig($connection, $row['ItemTypeId']);
+      }
+   }
+}
+
+function getPart($connection, $partId) {
+   $parts = mysqli_query($connection, "SELECT * FROM parts WHERE PartID LIKE '" . $partId . "'");
+   while ($row = mysqli_fetch_array($parts)) {
+      return $row['Minifigname'];
+   }
+}
+
+function getMinifig($connection, $minifigId) {
+   $minifigs = mysqli_query($connection, "SELECT * FROM minifigs WHERE MinifigID LIKE '" . $minifigId . "'");
+   while ($row = mysqli_fetch_array($parts)) {
+      return $row['Minifigname'];
+   }
 }
 
 ?>

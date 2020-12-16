@@ -8,12 +8,13 @@
     // Check for provided search term from index
     if (isset($_GET['term'])) {
         $searchTerm = $_GET['term'];
-        $limit = 10;
+        $limit = 5;
 
         // Search for term in DB
         $result	= mysqli_query(
-            $connection, "SELECT * FROM sets WHERE Setname LIKE '%{$searchTerm}%' LIMIT $limit"
+            $connection, "SELECT * FROM sets WHERE Setname LIKE '%{$searchTerm}%' OR SetID LIKE '%{$searchTerm}%' LIMIT $limit"
         );
+       
            
     }
     else {

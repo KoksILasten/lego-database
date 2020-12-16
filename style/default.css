@@ -16,8 +16,18 @@ p {
     margin: 0;
 }
 
+hr {
+    border: none;
+    background-color: #d3d3d3;
+    height: 1px;
+}
+
 img {
     border-radius: 8px;
+}
+
+div {
+    box-sizing: border-box;
 }
 
 button {
@@ -29,6 +39,37 @@ button {
 	cursor: pointer;
 	outline: inherit;
 }
+
+input[type=text] {
+    border-radius: 50px;
+    border: none;
+    -webkit-box-shadow: 0px 0px 2px rgba(0,0,0,0.3); 
+    box-shadow: 0px 0px 2px rgba(0,0,0,0.3);
+    width: 450pt;
+    height: 16pt;
+    padding: 10px 30px;
+    font-size: 11pt;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+input[type=submit] {
+    display: none;
+}
+
+input {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.logo {
+    background: linear-gradient(315deg, var(--color1, #0f69d6), var(--color2, #5b9ce6) 51%, var(--color1, #0f69d6)) var(--x, 0)/ 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: 0.6s;
+    transition-timing-function: ease;
+}
+
+.logo:hover { --x: 100%; }
 
 .menu {
     display: flex;

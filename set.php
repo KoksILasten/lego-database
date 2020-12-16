@@ -18,7 +18,7 @@
             $name = $row['Setname'];
             $category = findCategory($connection, $row['CatID']);
             $year = $row['Year'];
-            $imagePath = findImage($connection, $setId, true);
+            $imagePath = findImage($connection, $setId, "S", true);
         }       
     }
     else {
@@ -29,15 +29,7 @@
 
 <div id='set_page_container'>
     <?php
-        echo "<div id='set_info_div'>" .
-                "<img src='" . $imagePath . "' alt='" . $name . "'>" .
-                "<div>" . 
-                    "<p id='set_title'>" . $name . "</p>" .
-                    "<p id='set_id'>ID: " . $setId . "</p>" .
-                    "<button class='set_info set_info_cat'>" . $category . "</button>" .
-                    "<button class='set_info set_info_year'>" . $year . "</button>" .
-                "</div>" . 
-            "</div>";
+        include "include/set_output.php";
     ?>
 </div>
 
