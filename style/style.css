@@ -57,6 +57,30 @@
     font-size: 25px;
 }
 
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 20pt;
+}
+
+.pagination a {
+    font-size: 14pt;
+    border: solid .5pt rgb(42, 42, 42);
+    border-radius: 3pt;
+    height: 22pt;
+    width: 22pt;
+    margin: 0 8pt;
+    text-align: center;
+    transition: .2s;
+    padding-top: 5pt;
+}
+
+.pagination a:hover {
+    background-color: #0f69d6a4;
+    color: white;
+}
+
 /* =========== SET PAGE ========== */
 
 #set_page_container {
