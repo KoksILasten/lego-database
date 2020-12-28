@@ -10,10 +10,19 @@
         $searchTerm = $_GET['term'];
         $limit = 5;
 
-        // Search for term in DB
-        $result	= mysqli_query(
+        // Check wether the webiste should display the report or the sets
+        if ($searchTerm == 'Rapport' OR $searchTerm == 'rapport') {
+            header("Location: report.php");
+            die();
+
+        } else {
+            // Search for term in DB
+            $result	= mysqli_query(
             $connection, "SELECT * FROM sets WHERE Setname LIKE '%{$searchTerm}%' OR SetID LIKE '%{$searchTerm}%' LIMIT $limit"
         );
+        }
+
+        
        
            
     }

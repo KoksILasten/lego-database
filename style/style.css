@@ -119,3 +119,104 @@
     width:  100%;
     padding-left: 20pt;
 }
+
+
+/* =========== REPORT PAGE ========== */
+.paper {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 20mm;
+    margin: 4mm auto;
+    border: 1px #D3D3D3 solid;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 70pt;
+}
+
+.cover h1 {
+    margin-bottom: 20pt;
+    font-size: 64pt;
+}
+
+.elips {
+    border-radius: 50px;
+    border: none;
+    -webkit-box-shadow: 0px 0px 2px rgba(0,0,0,0.3); 
+    box-shadow: 0px 0px 2px rgba(0,0,0,0.3);
+    width: 380pt;
+    height: 28pt;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.elips p {
+    margin-right: 16pt;
+}
+
+.elips h4 {
+    margin-left: 16pt;
+    font-weight: 400;
+    color: rgb(49, 49, 49);
+}
+
+.authors {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 300pt;
+    margin-top: 60pt;
+    text-align: center;
+}
+
+.name p {
+    margin: 4pt;
+}
+
+.liuId p {
+    margin: 4pt;
+}
+
+.pageNum {
+    text-align: right;
+}
+
+.text {
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.5;
+    font-weight: 400;
+    font-size: 12pt;
+}
+
+.section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.section h4 {
+    margin: 6pt;
+}
+
+.home {
+    position: absolute;
+    background: linear-gradient(90deg, rgba(15,105,214,1) 0%, rgba(91,156,230,1) 35%);
+    color: white;
+    margin: 30pt;
+    width: 60pt;
+    height: 24pt;
+    border-radius: 30pt;
+    transition: .2s;
+}
+
+.home:hover {
+    -webkit-box-shadow: 0px 0px 6px 5px rgba(0,0,0,0.1); 
+    box-shadow: 0px 0px 6px 5px rgba(56, 43, 43, 0.1);
+}
