@@ -36,30 +36,40 @@
     <h1>Innehållsförteckning</h1>
 
     <!-- Table of contents --> 
-        <a href="#section1"><div class="section">
+    <a href="#section1">
+        <div class="section">
             <h4>1. Projektmetod och arbetsfördelning</h4>
             <h4>3</h4>
-        </div></a>
+        </div>
+    </a>
 
-        <a href="#section2"><div class="section">
+    <a href="#section2">
+        <div class="section">
             <h4>2. Tillgänglighet</h4>
             <h4>4</h4>
-        </div></a>
+        </div>
+    </a>
 
-        <a href="#section3"><div class="section">
+    <a href="#section3">
+        <div class="section">
             <h4>3. Upphovsrätt</h4>
             <h4>5</h4>
-        </div></a>
+        </div>
+    </a>
 
-        <a href="#section4"><div class="section">
+    <a href="#section4">
+        <div class="section">
             <h4>4. Självvärdering</h4>
             <h4>6</h4>
-        </div></a>
+        </div>
+    </a>
 
-        <a href="#section5"><div class="section">
+    <a href="#section5">
+        <div class="section">
             <h4>5. Tidsåtgång</h4>
             <h4>7</h4>
-        </div></a>
+        </div>
+    </a>
 </div>
 
 <!-- Page 3 --> 
@@ -67,11 +77,31 @@
     <p class="pageNum">3</p>
     <h1>1. Projektmetod och arbetsfördelning</h1>
     <p class="text">
-        Projektet delades tidigt upp i olika områden. Dessa områden skulle 
-        underlätta arbetsprocessen då vi enkelt skulle veta vad som behöver 
-        göras och i vilken ordning, där nästkommande område bygger på det 
-        avklarade. För mindre utveckling gjordes en lista där dessa 
-        placerades i en, från mest till minst, prioriterad ordning.
+        Tidigt delades projektet upp i olika områden. Dessa områden skulle underlätta arbetsprocessen 
+        då vi enkelt skulle veta vad som behöver göras och i vilken ordning, där nästkommande område 
+        skulle bygga på det redan avklarade. För mindre utveckling gjordes en lista där dessa organiserades 
+        i en, från mest till minst, prioriterad ordning. 
+        <br/>
+        <br/>
+        Under projektets inledning var vi noggranna med kontinuerliga möten för att förtydliga oklarheter och 
+        få en uppfattning om hur vi ligger till. Dessa möten användes även för att fördela arbetsuppgifterna 
+        vilket skulle komma att leda till en mer effektiviserad arbetsprocess då vi parallellt behandlar olika 
+        områden. För att undvika att ingen släpar efter var vi noga med att informera gruppen om hur vad vi gjort, 
+        hur vi gjort och varit öppen för frågor när en deluppgift blivit klar. 
+        <br/>
+        <br/>
+        När vi arbetade skedde det oftast via Visual Studio Code och dess Live Share. Detta var bra då det gjorde 
+        att vi var i ett arbetsläge. Vi bestämde ett tidsintervall och vi fördelade arbetsuppgifterna jämnt. Detta 
+        gjorde att vi fick mycket gjort på kort tid. Svårare blev det under julledigheten då samma rutiner inte var 
+        tillgängliga. Då hänvisades gruppen istället till fritt initiativtagande och eget arbete. Samma sak med mötena. 
+        Inga muntliga, kontinuerliga möten skedde utan enbart enstaka meningar byttes i gruppchatten så fort vi kom på 
+        att något behövde göras. 
+        <br/>
+        <br/>
+        Arbetsfördelningen hade vi som mål att fördela så rättvist som möjligt utifrån tidigare erfarenheter. Albin 
+        hade läst PHP  i gymnasiet, Filip har tidigare studerat JavaScript på egen hand och Erik hade C++-kursen och PHP-labbarna 
+        till sitt förfogande. Detta ledde naturligt till att Albin till en början fick vägleda resterande gruppmedlemmar och 
+        svara på frågor innan Erik och Filip kunde jobba självständigt.
     </p>
 </div>
 

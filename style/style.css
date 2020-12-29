@@ -58,27 +58,36 @@
 }
 
 .pagination {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding: 20pt;
+    position: absolute;
+    bottom: -70pt;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-box-shadow: 0px 0px 2px rgba(0,0,0,0.3); 
+    box-shadow: 0px 0px 2px rgba(0,0,0,0.3);
+    border-radius: 50pt;
+    padding: 0 16pt;
+    height: 36pt;
+    line-height: 36pt;
 }
 
 .pagination a {
     font-size: 14pt;
-    border: solid .5pt rgb(42, 42, 42);
-    border-radius: 3pt;
-    height: 22pt;
-    width: 22pt;
-    margin: 0 8pt;
-    text-align: center;
+    padding: 6pt 10pt;
     transition: .2s;
-    padding-top: 5pt;
+    height: 20pt;
+    width: 20pt;
+    border-radius: 50pt;
 }
 
 .pagination a:hover {
     background-color: #0f69d6a4;
     color: white;
+    cursor: pointer;
+}
+
+.prompt {
+    text-align: center;
+    margin-top: 20pt;
 }
 
 /* =========== SET PAGE ========== */
@@ -142,6 +151,10 @@
     font-size: 25pt;
     width:  100%;
     padding-left: 20pt;
+}
+
+.sets {
+    margin-bottom: 100pt;
 }
 
 
@@ -218,6 +231,7 @@
     line-height: 1.5;
     font-weight: 400;
     font-size: 12pt;
+    text-align: justify;
 }
 
 .section {
