@@ -20,7 +20,7 @@
             // Check wether the webiste should display the report or the sets
             if ($searchTerm == 'Rapport' OR $searchTerm == 'rapport') {
                 header("Location: report.php");
-                die(); // Ta bort??
+                die();
 
             } else {
                 // Search for term in DB
@@ -29,7 +29,7 @@
                 $numberOfResults = mysqli_num_rows($fullResult);
                 $numberOfPages = ceil($numberOfResults / $limit);
 
-                // find which page the user is on
+                // Find which page the user is on
                 if (!isset($_GET['page'])) {
                     $page = 1;
                     
@@ -48,6 +48,7 @@
     else {
         // Not found, send user back to index
         header("Location: index.php");
+        die();
     }    
 ?>
 

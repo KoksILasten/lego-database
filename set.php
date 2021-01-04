@@ -18,7 +18,7 @@
             $name = $row['Setname'];
             $category = findCategory($connection, $row['CatID']);
             $year = $row['Year'];
-            $imagePath = findImage($connection, $setId, "S", true);
+            $imagePath = findImage($connection, $setId, "S", "", true);
         }       
     }
     else {
@@ -33,6 +33,7 @@
     ?>
 </div>
 
+<script src="js/set-page.js"></script>
 <?php
     include "include/footer.php";
 ?>

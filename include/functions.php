@@ -4,65 +4,79 @@
 function displayResults($connection, $result) {
    if($result->num_rows === 0) {
       $searchTerm = $_GET['term'];
-      // no results
-      echo "<div class'prompt'>";
-         echo "Din sökning: " . $searchTerm . " finns inte bland sökresultaten. <br />";
-         echo "Suggestions: <br />";
-         echo " - Kontrollera om det finns stavfel. <br />"; //Skriv in andra förslag än de från google
+      // No results
+      echo '<div class="prompt">';
+         echo "Din sökning: " . $searchTerm . " - finns inte bland sökresultaten. ";
+      echo "</div>";
+         // Img
+      echo '<div class="cloons">';
+         echo "<img class='cloons' src='assets/img/noresult.jpg' alt=''>";
+      echo "</div>";
+         // Suggestions 
+      echo '<div class="noresult">';   
+         echo "Alternativ: <br />";
+         echo " - Kontrollera om det finns stavfel. <br />"; 
          echo " - Testa andra ord. <br />";
          echo " - Testa en annan kategori. <br />";
+      echo "</div>";
       echo "</div>";
    }
    else {
       // Results found, display search
-      echo '<div class="sets">';
          while ($row = mysqli_fetch_array($result))	{
             $setId = $row['SetID'];
             $name = $row['Setname'];
             $year = $row['Year'];
             $catId = $row['CatID'];
-            $imagePath = findImage($connection, $setId, "S", true);
+            $imagePath = findImage($connection, $setId, "S", "", true);
+            echo '<div class="sets">';
+               echo "<a href='set.php?setId=" . $setId . "'><div class='result_container'>";
+                  echo "<img src='" . $imagePath  . "' alt='" . $name  . "'>";
 
-            echo "<a href='set.php?setId=" . $setId . "'><div class='result_container'>";
-               echo "<img src='" . $imagePath  . "' alt='" . $name  . "'>";
-
-               echo "<div>";
-                  echo "<p class='result_title'>" . $name . "</p>";
-                  echo "<p class='result_categories'>Kategori: " . findCategory($connection, $catId) . "</p>";
-                  echo "<p class='result_year'>År: " . $year . "</p>";
-               echo "</div>";
-            echo "</div></a>";
-
+                  echo "<div>";
+                     echo "<p class='result_title'>" . $name . "</p>";
+                     echo "<p class='result_categories'>Kategori: " . findCategory($connection, $catId) . "</p>";
+                     echo "<p class='result_year'>År: " . $year . "</p>";
+                  echo "</div>";
+               echo "</div></a>";
+            echo '</div>';
          }
-      echo '</div>';
    }
 
 }
 
 // Find image path from corresponding item ID, small or large
-function findImage($connection, $itemId, $type, $getLarge) {
+function findImage($connection, $itemId, $type, $colorId, $getLarge) {
    $imagePathPrefix = "http://www.itn.liu.se/~stegu76/img.bricklink.com/";
 
-   $images = mysqli_query($connection, "SELECT * FROM	images WHERE ItemID LIKE '" . $itemId . "'");
+   // Check if color is used as search argument. If so, make it fit into the url and use it as search term in DB
+   if ($colorId != "") {
+      $images = mysqli_query($connection, "SELECT * FROM	images WHERE ItemID LIKE '" . $itemId . "' AND ItemtypeID LIKE '" . $type . "' AND ColorID LIKE '" . $colorId . "'");
+      $colorId .= "/";
+   }
+   else {
+      $images = mysqli_query($connection, "SELECT * FROM	images WHERE ItemID LIKE '" . $itemId . "' AND ItemtypeID LIKE '" . $type . "'");
+   }
 
-   while ($row = mysqli_fetch_array($images))	{
+
+      while ($row = mysqli_fetch_array($images))	{
       if ($getLarge) {
          // Get large image
          if ($row['has_largejpg']) {
-            return $imagePathPrefix . $type . "L/" . $itemId . ".jpg";
+            return $imagePathPrefix . $type . "L/" . $colorId . $itemId . ".jpg";
          }
          else if ($row['has_largegif']) {
-            return $imagePathPrefix . $type . "L/" . $itemId . ".gif";
+            return $imagePathPrefix . $type . "L/" . $colorId . $itemId . ".gif";
          }
       }
       if ($row['has_jpg']) {
-         return $imagePathPrefix . $type . "/" . $itemId . ".jpg";
+         return $imagePathPrefix . $type . "/" . $colorId . $itemId . ".jpg";
       }
       else if ($row['has_gif']) {
-         return $imagePathPrefix . $type . "/" . $itemId . ".gif";
+         return $imagePathPrefix . $type . "/" . $colorId . $itemId . ".gif";
       }
       else {
-        return $imagePathPrefix . "noimage_small.png";
+      return $imagePathPrefix . "noimage_small.png";
       }
    }
    return "(notFound)";
@@ -79,31 +93,55 @@ function findCategory($connection, $catId) {
 }
 
 function displayInventory($connection, $setId) {
-   $inventory = mysqli_query($connection, "SELECT * FROM	inventory WHERE SetID LIKE '" . $setId . "'");
+   $inventory = mysqli_query($connection, "SELECT * FROM	inventory WHERE SetID LIKE '" . $setId . "' ORDER BY ItemtypeID, Quantity");
+   
+   $outputtingMinifigs = true; // Starts with outputting minifigs
+   echo "<div class='set_inventory_div' id='inventory_minifigs_div'>"; // Start minifigs div
 
    // Search for the minifigs
    while ($row = mysqli_fetch_array($inventory)) {
-      if ($row['ItemTypeId'] == "P") {
-         echo "PART: " . getPart($connection, $row['ItemTypeId']);
+      if ($row['ItemtypeID'] == "M") {
+         $imagePath = findImage($connection, $row['ItemID'], "M", "", false);
+         displayCell ($row['ItemID'], $row['Quantity'], $imagePath);
       }
-      else {
-         echo "MINIFIG: " . getMinifig($connection, $row['ItemTypeId']);
+      else if ($row['ItemtypeID'] == "P") {
+         // Check if last output was a minifig
+         if ($outputtingMinifigs) {
+            // End minifigs div and start parts div
+            echo "</div><hr><div class='set_inventory_div' id='inventory_parts_div'>";
+            $outputtingMinifigs = false;
+         }
+
+         $imagePath = findImage($connection, $row['ItemID'], "P", $row['ColorID'], false);
+         displayCell ($row['ItemID'], $row['Quantity'], $imagePath);
       }
    }
+
+   echo "</div>"; // End parts div
 }
 
-function getPart($connection, $partId) {
-   $parts = mysqli_query($connection, "SELECT * FROM parts WHERE PartID LIKE '" . $partId . "'");
-   while ($row = mysqli_fetch_array($parts)) {
-      return $row['Minifigname'];
-   }
+function displayCell ($itemId, $quantity, $imagePath) {
+   echo "<div class='part_cell'>
+            <p>" . $quantity . " x</p>
+            <div class='item_img_div'>
+               <img src=" . $imagePath . ">
+               <div class='item_id'>" . $itemId . "</div>
+            </div>
+         </div>";
 }
 
-function getMinifig($connection, $minifigId) {
-   $minifigs = mysqli_query($connection, "SELECT * FROM minifigs WHERE MinifigID LIKE '" . $minifigId . "'");
-   while ($row = mysqli_fetch_array($parts)) {
-      return $row['Minifigname'];
-   }
-}
+// function getPart($connection, $partId) {
+//    $parts = mysqli_query($connection, "SELECT * FROM parts WHERE PartID LIKE '" . $partId . "'");
+//    while ($row = mysqli_fetch_array($parts)) {
+//       return $row['Partname'];
+//    }
+// }
+
+// function getMinifig($connection, $minifigId) {
+//    $minifigs = mysqli_query($connection, "SELECT * FROM minifigs WHERE MinifigID LIKE '" . $minifigId . "'");
+//    while ($row = mysqli_fetch_array($parts)) {
+//       return $row['Minifigname'];
+//    }
+// }
 
 ?>
