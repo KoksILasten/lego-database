@@ -12,5 +12,5 @@
 <!-- Form value is same as your search !-->
 <form method="post">
       <input type="submit" value="🔎" name="search-submit">
-      <input action="#" autocomplete="off" type="text" name="search-term" placeholder="Sök på set-ID eller Lego-set" value="<?php $searchTerm = $_GET['term']; echo $searchTerm; ?>"> 
+      <input action="#" autocomplete="off" type="text" name="search-term" placeholder="Sök på Lego-set eller set-ID" value="<?php $searchTerm = $_GET['term']; echo $searchTerm; ?>"> 
 </form>

@@ -20,3 +20,6 @@ $('.item_img_div').mouseleave(function() {
       $(this).parent().children('img').fadeTo("fast" , 1);
    });
 });
+
+
+

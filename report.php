@@ -3,15 +3,14 @@
     include 'include/header.php';
 ?>
 
-<button class="home">
-    <a href="index.php">Hem</a>
-</button>
-
 <!-- Page 1 --> 
 <div class="paper">
+    <button class="home">
+        <a href="index.php">Hem</a>
+    </button>
     <div class="cover">
         <h1 class="logo">Leegle</h1>
-        <div class="elips">
+        <div class="ellips">
             <h4>Grupp 13 | Uppgift 1</h4>
             <p>🔍</p>
         </div>

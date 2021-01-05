@@ -22,12 +22,11 @@
 /* =========== SEARCH PAGE ========== */
 
 #search_results_container {
-    padding: 0 150pt;
+    padding: 0 140pt;
 }
 
 .result_container {
     background: transparent;
-    width: 70vw;
     border-bottom: 1px solid rgba(0,0,0,0.1);
     display: flex;
     align-items: center;
@@ -55,25 +54,30 @@
 }
 
 .pagination {
+    
     position: absolute;
     bottom: -70pt;
     left: 50%;
     transform: translateX(-50%);
+    
+    max-width: calc(100vw - 100pt);
     -webkit-box-shadow: 0px 0px 2px rgba(0,0,0,0.3); 
     box-shadow: 0px 0px 2px rgba(0,0,0,0.3);
     border-radius: 50pt;
-    padding: 0 16pt;
     height: 36pt;
     line-height: 36pt;
+    display: flex;
+    flex-wrap: nowrap !important;
+    overflow-x: scroll;
+    padding: 0 10pt;
+    box-shadow: inset 12px 0 15px -4px  rgba(0,0,0,0.1), inset -12px 0 8px -4px  rgba(0,0,0,0.1);
 }
 
-.pagination a {
+.page {
     font-size: 14pt;
-    padding: 6pt 10pt;
+    padding: 0 14pt;
     transition: .2s;
-    height: 20pt;
-    width: 20pt;
-    border-radius: 50pt;
+    border-radius: 18pt;
 }
 
 .pagination a:hover {
@@ -88,6 +92,10 @@
 }
 
 /* =========== SET PAGE ========== */
+
+.sets {
+    width: 65vw;
+}
 
 #set_page_container {
     padding: 0 10%;
@@ -200,9 +208,9 @@
 
 /* =========== REPORT PAGE ========== */
 .paper {
-    width: 210mm;
-    min-height: 297mm;
+    max-width: 210mm;
     padding: 20mm;
+    min-height: 297mm;
     margin: 4mm auto;
     border: 1px #D3D3D3 solid;
     border-radius: 8px;
@@ -223,11 +231,12 @@
     font-size: 64pt;
 }
 
-.elips {
+.ellips {
     border-radius: 50px;
     border: none;
     -webkit-box-shadow: 0px 0px 2px rgba(0,0,0,0.3); 
     box-shadow: 0px 0px 2px rgba(0,0,0,0.3);
+    max-width: calc(100vw - 40pt);
     width: 380pt;
     height: 28pt;
     display: flex;
@@ -235,11 +244,11 @@
     justify-content: space-between;
 }
 
-.elips p {
+.ellips p {
     margin-right: 16pt;
 }
 
-.elips h4 {
+.ellips h4 {
     margin-left: 16pt;
     font-weight: 400;
     color: rgb(49, 49, 49);
@@ -287,7 +296,6 @@
     position: absolute;
     background: linear-gradient(90deg, rgba(15,105,214,1) 0%, rgba(91,156,230,1) 35%);
     color: white;
-    margin: 30pt;
     width: 60pt;
     height: 24pt;
     border-radius: 30pt;
@@ -299,13 +307,10 @@
     box-shadow: 0px 0px 6px 5px rgba(56, 43, 43, 0.1);
 }
 
-.cloons {
-    width: 300pt;
-    height: 200pt;
-    margin: auto;
-}
-
-.noresult {
-    text-align: center;
+.error img {
+    width: 500px;
+    max-width: calc(100vw - 60pt);
+    display: block;
+    margin: 10pt auto;
 }
 

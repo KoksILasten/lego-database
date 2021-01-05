@@ -9,11 +9,11 @@ function displayResults($connection, $result) {
          echo "Din sökning: " . $searchTerm . " - finns inte bland sökresultaten. ";
       echo "</div>";
          // Img
-      echo '<div class="cloons">';
-         echo "<img class='cloons' src='assets/img/noresult.jpg' alt=''>";
-      echo "</div>";
+         echo '<div class="error">';
+         echo "<img src='assets/img/noresult.jpg' alt='Inga resultat'>";
+         echo '</div>';
          // Suggestions 
-      echo '<div class="noresult">';   
+      echo '<div class="prompt">';   
          echo "Alternativ: <br />";
          echo " - Kontrollera om det finns stavfel. <br />"; 
          echo " - Testa andra ord. <br />";
@@ -35,8 +35,8 @@ function displayResults($connection, $result) {
 
                   echo "<div>";
                      echo "<p class='result_title'>" . $name . "</p>";
-                     echo "<p class='result_categories'>Kategori: " . findCategory($connection, $catId) . "</p>";
-                     echo "<p class='result_year'>År: " . $year . "</p>";
+                     echo "<p class='result_categories'>🔠 " . findCategory($connection, $catId) . "</p>";
+                     echo "<p class='result_year'>📅 " . $year . "</p>";
                   echo "</div>";
                echo "</div></a>";
             echo '</div>';

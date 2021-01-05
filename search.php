@@ -6,7 +6,7 @@
     include 'include/menu.php';
 
     $limit = 12;
-    $minLenght = 5;
+    $minLenght = 3;
     // Check for provided search term from index
     if (isset($_GET['term'])) {
         $searchTerm = $_GET['term'];
@@ -57,11 +57,18 @@
 </div>
 
 <?php
-    // Only show pagination is more than one page
+    // Only show pagination if more than one page
     if ($numberOfPages > 1) {
         echo "<div class='pagination'>";
             for ($page = 1; $page <= $numberOfPages; $page++) {
-                echo '<a href="search.php?term=' . $searchTerm . '&page=' . $page . '">' . $page . '</a> ';
+
+                // Active button if clicked
+                if ($_GET['page'] == $page) {
+                    echo '<a style="background-color: #0f69d6a4; color: white;" class="page" href="search.php?term=' . $searchTerm . '&page=' . $page . '">' . $page . '</a> ';
+                } else {
+                    echo '<a class="page" href="search.php?term=' . $searchTerm . '&page=' . $page . '">' . $page . '</a> ';
+                }
+
             }
         echo "</div>";
     }
