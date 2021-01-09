@@ -39,7 +39,7 @@
 
                 $thisPageFirstResult = ($page - 1) * $limit;
 
-                $sql = "SELECT * FROM sets WHERE Setname LIKE '%{$searchTerm}%' OR SetID LIKE '%{$searchTerm}%' LIMIT $thisPageFirstResult,$limit";
+                $sql = "SELECT * FROM sets WHERE Setname LIKE '%{$searchTerm}%' OR SetID LIKE '%{$searchTerm}%' ORDER BY sets.Year DESC LIMIT $thisPageFirstResult,$limit";
                 $result	= mysqli_query($connection, $sql);
             }
         }
@@ -57,9 +57,14 @@
 </div>
 
 <?php
+
+function test() {
+    echo "HELLO WORLD!";
+}
     // Only show pagination if more than one page
     if ($numberOfPages > 1) {
         echo "<div class='pagination'>";
+
             for ($page = 1; $page <= $numberOfPages; $page++) {
 
                 // Active button if clicked

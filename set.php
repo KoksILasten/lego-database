@@ -32,6 +32,13 @@
         include "include/set_output.php";
     ?>
 </div>
+<div id="part_details_div">
+    <div>
+        <img src="" alt="" id="part_details_img">
+    </div>    
+    <div id="part_details_text_div">
+    </div>
+</div>
 
 <script src="js/set-page.js"></script>
 <?php

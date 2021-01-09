@@ -5,7 +5,6 @@
         height: 16pt;
         justify-content: center;
         align-items: center;
-        font-size: 11pt;
     }
 
     .result_title {
@@ -32,7 +31,7 @@
     }
 
     #set_id {
-        font-size: 10pt;
+        font-size: 11pt;
         text-align: center;
     }
 
@@ -60,7 +59,7 @@
     }
     
     #search_results_container {
-        padding: 10pt 30pt;
+
     }
 
     .result_container img {
@@ -71,6 +70,10 @@
     .sets {
         width: 85vw;
     }
+
+    #set_inventory_title {
+        text-align: center;
+    }
 }
 
 @media only screen and (max-width: 450px) {
@@ -79,7 +82,7 @@
     }
 
     #set_title {
-        font-size: 18pt;
+        font-size: 22pt;
         text-align: center;
     }
 
@@ -96,11 +99,29 @@
     }
 
     ::placeholder {
-        font-size: 7pt;
+        font-size: 9pt;
     }
 
     #search_results_container {
-        margin-lef: 8pt;
+        
+    }
+
+    .part_cell {
+        margin: 10pt 8pt;
+    }
+
+    .part_cell p {
+        font-size: 11pt;
+    }
+
+    .item_img_div img {
+        height: 40px;
+        width: 40px;
+        object-fit: contain;
+    }
+
+    .pagination {
+        max-width: calc(100vw - 50pt);
     }
    
 }

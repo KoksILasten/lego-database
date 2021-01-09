@@ -1,15 +1,15 @@
-body {
+html {
+    scroll-behavior: smooth;
+}
+
+body, html{
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     padding: 0;
     margin: 0;
-    min-height: 100vh;
-    width: 100vw;
+    min-height: 100%;
+    width: 100%;
     position: relative;
-}
-
-html {
-    scroll-behavior: smooth;
 }
 
 a {
@@ -42,30 +42,28 @@ button {
 	padding: 0;
 	font: inherit;
 	cursor: pointer;
-	outline: inherit;
+    outline: inherit;
+    max-height: 100%;
+}
+button img {
+    max-height: 100%;
+    max-width: 100%;
 }
 
 input[type=text] {
-    border-radius: 50px;
     border: none;
-    -webkit-box-shadow: 0px 0px 2px rgba(0,0,0,0.3); 
-    box-shadow: 0px 0px 2px rgba(0,0,0,0.3);
-    max-width: 430pt;
-    width: calc(100vw - 260pt);
-    height: 16pt;
-    padding: 10px 50px;
     font-size: 11pt;
     outline: none;
     -webkit-appearance: none;
+    flex: 1 1 89%;
 }
 
 input[type=submit] {
-    position: absolute;
     font-size: 17pt;
-    margin: 3pt 0 0 8pt;
     border: none;
     background: none;
     cursor: pointer;
+    flex: 1 1 10%;
 }
 
 input {
@@ -76,6 +74,55 @@ input {
     display: flex;
     justify-content: space-between;
 }
+
+#searchbox_div {
+    border-radius: 50px;
+    border: none;
+    -webkit-box-shadow: 0px 0px 2px rgba(0,0,0,0.3); 
+    box-shadow: 0px 0px 2px rgba(0,0,0,0.3);
+    max-width: 430pt;
+    width: calc(100vw - 260pt);
+    padding: 1pt 10pt;
+    height: 30pt;
+    display: flex;
+    margin-top: 10pt;
+}
+#searchbox_div div {
+    display: flex;
+}
+#searchbox_div form {
+    flex: 1 1 90%;
+    display: flex;
+    flex-direction: column;
+}
+#searchbox_div select {
+    flex: 1 1 30%;
+}
+
+#search_term_div {
+    flex: 1 1 90%;
+    height: 30pt;
+    padding: 4pt 0;
+}
+
+
+
+#filter_dropdown_btn{
+    flex: 1 1 5%;
+    display: flex;
+    align-items: center;
+    padding: 0 7pt;
+}
+
+#search_btn {
+    flex: 1 1 5%;
+    margin-right: 10pt;
+}
+
+#flexbox_margin {
+    flex: 1 1 5%;
+}
+
 
 #magnify {
     height: 18pt;
@@ -98,7 +145,7 @@ input {
     flex-direction: row;
 }
 
-.menu form {
+.menu #searchbox-div {
     margin: 20pt 30px;
 }
 

@@ -13,7 +13,7 @@
    "</div>" .
    "<div>" .
    "<p id='set_inventory_title'>Innehåller</p>" .
-   "<hr id='short_hr'>";
+   "<hr>";
    displayInventory($connection, $setId);
    echo "</div>";
 ?>

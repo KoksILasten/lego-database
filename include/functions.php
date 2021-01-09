@@ -93,16 +93,24 @@ function findCategory($connection, $catId) {
 }
 
 function displayInventory($connection, $setId) {
-   $inventory = mysqli_query($connection, "SELECT * FROM	inventory WHERE SetID LIKE '" . $setId . "' ORDER BY ItemtypeID, Quantity");
-   
-   $outputtingMinifigs = true; // Starts with outputting minifigs
+   // , p.Partname, m.Minifigname
+   // $inventory = mysqli_query($connection, "SELECT 
+   //    i.SetID, i.ItemtypeID, i.ItemID, i.Quantity i.ColorID
+   //    FROM inventory AS i
+   //    -- INNER JOIN parts AS p ON i.ItemID = p.PartID
+   //    -- INNER JOIN minifigs AS m ON i.ItemID = m.MinifigID
+   //    WHERE i.SetID LIKE '" . $setId . "' ORDER BY i.ItemtypeID, i.Quantity");
+
+   $inventory = mysqli_query($connection, "SELECT * FROM inventory WHERE SetID LIKE '" . $setId . "' ORDER BY ItemtypeID, Quantity");
+
    echo "<div class='set_inventory_div' id='inventory_minifigs_div'>"; // Start minifigs div
 
    // Search for the minifigs
    while ($row = mysqli_fetch_array($inventory)) {
       if ($row['ItemtypeID'] == "M") {
+         $outputtingMinifigs = true; // Starts with outputting minifigs
          $imagePath = findImage($connection, $row['ItemID'], "M", "", false);
-         displayCell ($row['ItemID'], $row['Quantity'], $imagePath);
+         displayCell ($row['ItemID'], getMinifigName($connection, $row['ItemID']), $row['Quantity'], $imagePath);
       }
       else if ($row['ItemtypeID'] == "P") {
          // Check if last output was a minifig
@@ -113,35 +121,36 @@ function displayInventory($connection, $setId) {
          }
 
          $imagePath = findImage($connection, $row['ItemID'], "P", $row['ColorID'], false);
-         displayCell ($row['ItemID'], $row['Quantity'], $imagePath);
+         displayCell ($row['ItemID'], getPartName($connection, $row['ItemID']), $row['Quantity'], $imagePath);
       }
    }
 
    echo "</div>"; // End parts div
 }
 
-function displayCell ($itemId, $quantity, $imagePath) {
-   echo "<div class='part_cell'>
+// Output the part or minifig cell
+function displayCell ($itemId, $partName, $quantity, $imagePath) {
+   // NOTE: We replace every "'" in $partName with "?quote?" for it to work as a argument in the function. We switch it back later inte the function
+   echo "<div class=\"part_cell\" onclick=\"displayPartDetails('" . $itemId . "', '" . str_replace("'", "?quote?", $partName) . "', '" . $quantity . "', '" . $imagePath . "')\">
             <p>" . $quantity . " x</p>
             <div class='item_img_div'>
                <img src=" . $imagePath . ">
-               <div class='item_id'>" . $itemId . "</div>
             </div>
          </div>";
 }
 
-// function getPart($connection, $partId) {
-//    $parts = mysqli_query($connection, "SELECT * FROM parts WHERE PartID LIKE '" . $partId . "'");
-//    while ($row = mysqli_fetch_array($parts)) {
-//       return $row['Partname'];
-//    }
-// }
+function getPartName($connection, $partId) {
+   $parts = mysqli_query($connection, "SELECT * FROM parts WHERE PartID LIKE '" . $partId . "'");
+   while ($row = mysqli_fetch_array($parts)) {
+      return $row['Partname'];
+   }
+}
 
-// function getMinifig($connection, $minifigId) {
-//    $minifigs = mysqli_query($connection, "SELECT * FROM minifigs WHERE MinifigID LIKE '" . $minifigId . "'");
-//    while ($row = mysqli_fetch_array($parts)) {
-//       return $row['Minifigname'];
-//    }
-// }
+function getMinifigName($connection, $minifigId) {
+   $minifigs = mysqli_query($connection, "SELECT * FROM minifigs WHERE MinifigID LIKE '" . $minifigId . "'");
+   while ($row = mysqli_fetch_array($minifigs)) {
+      return $row['Minifigname'];
+   }
+}
 
 ?>
