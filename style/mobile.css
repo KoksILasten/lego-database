@@ -1,11 +1,8 @@
 @media only screen and (max-width: 700px) {
-    input[type=text] {
-        max-width: calc(100vw - 130pt);
-        width: calc(100vw - 130pt);
-        height: 16pt;
-        justify-content: center;
-        align-items: center;
-    }
+
+    #set_content {
+        margin-top: 20pt;
+    }   
 
     .result_title {
         font-size: 12pt;
@@ -13,16 +10,15 @@
 
     .menu {
         flex-direction: column;
+        align-items: center;
+        margin: 10pt 0;
+        height: auto;
     }
 
     #minititle {
         font-size: 36pt;
         margin-top: 20pt;
         text-align: center;
-    }
-
-    .menu form {
-        margin: 6pt 30pt;
     }
 
     #set_title {
@@ -36,8 +32,15 @@
     }
 
     .set_info {
-        font-size: 12pt;
-        margin: 2pt;
+        width: 100pt;
+    }
+
+    #filter_dropdown_div select {
+        font-size: 9pt;
+    }
+
+    .set_info_year {
+        width: 60pt;
     }
 
     #set_info_div {
@@ -57,10 +60,6 @@
         display: flex;
         justify-content: center;
     }
-    
-    #search_results_container {
-
-    }
 
     .result_container img {
         height: 120px;
@@ -74,9 +73,33 @@
     #set_inventory_title {
         text-align: center;
     }
+
+    .ellips {
+        width: 200pt;
+    }
+
+    #search_term_div img {
+        padding: 0;
+    }
+
+    .error {
+        flex-direction: column;
+    }
+
+    .imgSeq img {
+        height: 150px;
+    }
 }
 
 @media only screen and (max-width: 450px) {
+    #searchbox_div {
+        width: calc(100vw - 30pt);
+    }
+
+    .set_info_cat {
+        width: 90pt;
+    }
+
     #title {
         font-size: 48pt; 
     }
@@ -98,14 +121,6 @@
         font-size: 42pt;
     }
 
-    ::placeholder {
-        font-size: 9pt;
-    }
-
-    #search_results_container {
-        
-    }
-
     .part_cell {
         margin: 10pt 8pt;
     }
@@ -122,6 +137,5 @@
 
     .pagination {
         max-width: calc(100vw - 50pt);
-    }
-   
+    }   
 }

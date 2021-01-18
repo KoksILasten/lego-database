@@ -1,7 +1,8 @@
+<script src="js/searchbox.js"></script>
 </body>
 </html>
 
 <?php
    // Close connection 
-   mysqli_close($conn);    
+   mysqli_close($connection);    
 ?>

@@ -1,5 +1,6 @@
 html {
     scroll-behavior: smooth;
+    height: 100%;
 }
 
 body, html{
@@ -10,7 +11,8 @@ body, html{
     min-height: 100%;
     width: 100%;
     position: relative;
-}
+    overflow-x: hidden;
+}   
 
 a {
    text-decoration: none;
@@ -45,9 +47,14 @@ button {
     outline: inherit;
     max-height: 100%;
 }
+
 button img {
     max-height: 100%;
     max-width: 100%;
+}
+
+input {
+    font-family: 'Montserrat', sans-serif;
 }
 
 input[type=text] {
@@ -56,6 +63,7 @@ input[type=text] {
     outline: none;
     -webkit-appearance: none;
     flex: 1 1 89%;
+    background: transparent;
 }
 
 input[type=submit] {
@@ -66,9 +74,18 @@ input[type=submit] {
     flex: 1 1 10%;
 }
 
-input {
-    font-family: 'Montserrat', sans-serif;
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
 }
+
+select:focus {
+    outline: none;
+}
+
+select::-ms-expand { 
+    display: none; 
+} 
 
 .inputContainer {
     display: flex;
@@ -76,42 +93,126 @@ input {
 }
 
 #searchbox_div {
-    border-radius: 50px;
+    border-radius: 25px;
     border: none;
     -webkit-box-shadow: 0px 0px 2px rgba(0,0,0,0.3); 
     box-shadow: 0px 0px 2px rgba(0,0,0,0.3);
     max-width: 430pt;
-    width: calc(100vw - 260pt);
+    width: calc(100vw - 100pt);
     padding: 1pt 10pt;
     height: 30pt;
     display: flex;
-    margin-top: 10pt;
+    margin: 10pt 10pt 0 0;
+    transition: 0.2s;
+    overflow: hidden;
+    background-color: white;
 }
+
 #searchbox_div div {
     display: flex;
 }
-#searchbox_div form {
+
+#searchbox_form {
     flex: 1 1 90%;
-    display: flex;
     flex-direction: column;
 }
-#searchbox_div select {
-    flex: 1 1 30%;
+
+#searchbox_form div {
+    height: 30pt;
 }
 
 #search_term_div {
     flex: 1 1 90%;
     height: 30pt;
-    padding: 4pt 0;
+    padding: 2pt 4pt;
 }
 
+#search_term_div img {
+    min-width: 30px;
+}
 
+#filter_dropdown_div {
+    padding-bottom: 8pt;
+}
+
+#filter_dropdown_div select {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11pt;
+    max-width: 140pt;
+    text-align-last: center;
+    padding-bottom: 0pt;
+}
+
+#filter_dropdown_div select:focus {
+    border-bottom: none;
+    border-radius: 20px 20px 0 0;
+    transition: 0.1s;
+}
+
+#filter_dropdown_div option {
+    background-color: white;
+    color: black;
+    border: 1px red solid;
+}
+
+#dropdown_offset {
+    margin-right: 10pt;
+}
+
+#set_content {
+    margin-top: 100pt;
+    margin-right: 40pt;
+}
+
+.set_info {
+    margin-bottom: -4pt;
+    padding: 0 15pt;
+    border-radius: 20px;
+    width: fit-content;
+    margin-right: 8pt;
+    transition: 0.2s;
+}
+
+.set_info:hover {
+    color: white;
+}
+
+.set_info_cat {
+    border: solid 1.5px #5292C8;
+}
+
+.set_info_cat:hover {
+    background-color: #5292C8;
+}
+
+.set_info_year {
+    border: solid 1.5px #C85252;
+}
+
+.set_info_year:hover {
+    background-color: #C85252;
+}
+
+.cat_selectbox_hover_js {
+    color: white !important;
+    background-color: #5292C8 !important;
+}
+
+.year_selectbox_hover_js {
+    color: white !important;
+    background-color: #C85252 !important;
+}
 
 #filter_dropdown_btn{
     flex: 1 1 5%;
     display: flex;
-    align-items: center;
-    padding: 0 7pt;
+    align-items: flex-start;
+}
+
+#filter_dropdown_btn_img {
+    height: 10pt;
+    margin: 10pt 0;
+    transition: all 0.2s ease;
 }
 
 #search_btn {
@@ -123,26 +224,14 @@ input {
     flex: 1 1 5%;
 }
 
-
-#magnify {
-    height: 18pt;
-    position: absolute;
-    margin: 7pt 0 0 12pt;
-}
-
 .logo {
-    background: linear-gradient(315deg, var(--color1, #0f69d6), var(--color2, #5b9ce6) 51%, var(--color1, #0f69d6)) var(--x, 0)/ 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: 0.6s;
-    transition-timing-function: ease;
+    color: #5b9ce6;
 }
-
-.logo:hover { --x: 100%; }
 
 .menu {
     display: flex;
     flex-direction: row;
+    height: 90pt;
 }
 
 .menu #searchbox-div {
@@ -152,4 +241,9 @@ input {
 ::placeholder {
     font-family: 'Montserrat', sans-serif;
     font-size: 11pt;
+}
+
+.footer {
+    height: 40pt;
+    margin-bottom: 60pt;
 }
