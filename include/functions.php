@@ -65,7 +65,7 @@ function createYearSpan($numbers, &$span) {
 }
 
 // Display search results based on search term
-function displayResults($connection, $result, $term, $cat, $year) {
+function displayResults($connection, $result, $term) {
    if($result->num_rows === 0) {
       // No results   
 
@@ -73,20 +73,8 @@ function displayResults($connection, $result, $term, $cat, $year) {
       $message = '';
       if ($term != "") {
          $message .= 'Din sökning "<span class="prompt_quote">' . $term . '</span>"';
-         if ($cat != "") {
-            $message .= '<br>under kategorin "<span class="prompt_quote">' . findCategory($connection, $cat) . '</span>"';
-         }
-         if ($year != "") {
-            $message .= '<br>mellan åren "<span class="prompt_quote">' . $year . ' - ' . ($year + 9) . '</span>"';
-         }
+
          $message .= '<br>gav tyvärr inga resultat';
-      }
-      else if ($cat != "") {
-         $message .= 'Kategorin "<span class="prompt_quote">' . findCategory($connection, $cat) . '</span>"';
-         if ($year != "") {
-            $message .= '<br>mellan åren "<span class="prompt_quote">' . $year . ' - ' . ($year + 9) . '</span>"';
-         }
-         $message .= '<br>är tyvärr tom';
       }
          
       echo "<div class='prompt'>";
@@ -112,8 +100,6 @@ function displayResults($connection, $result, $term, $cat, $year) {
          while ($row = mysqli_fetch_array($result))	{
             $setId = $row['SetID'];
             $name = $row['Setname'];
-            $year = $row['Year'];
-            $catId = $row['CatID'];
             $imagePath = findImage($connection, $setId, "S", "", true);
             echo '<div class="sets">';
                echo "<a href='set.php?setId=" . $setId . "'><div class='result_container'>";
@@ -121,8 +107,6 @@ function displayResults($connection, $result, $term, $cat, $year) {
 
                   echo "<div>";
                      echo "<p class='result_title'>" . $name . "</p>";
-                     echo "<p class='result_categories'>🔠 " . findCategory($connection, $catId) . "</p>";
-                     echo "<p class='result_year'>📅 " . $year . "</p>";
                   echo "</div>";
                echo "</div></a>";
             echo '</div>';
@@ -168,17 +152,8 @@ function findImage($connection, $itemId, $type, $colorId, $getLarge) {
    return "(notFound)"; // Something went wrong in the search, used for troubleshooting
 }
 
-// Find category name from its ID
-function findCategory($connection, $catId) {
-   $categories = mysqli_query($connection, "SELECT * FROM categories WHERE CatID LIKE '" . $catId . "'");
 
-   while ($row = mysqli_fetch_array($categories)) {
-      return $row['Categoryname']; // Category found, return name
-   }
-   return "(not found)"; // Something went wrong in the search, used for troubleshooting
-}
-
-function displayInventory($connection, $setId) {
+function displayInventory($connection, $setId) { //vet inte om jag ska ta bort den här ;)
    $mCells = 0;
    $pCells = 0;
    $outputtingMinifigs = true; // Starts with outputting minifigs

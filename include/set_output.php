@@ -5,8 +5,8 @@
       "<div id='set_content'>" . 
          "<p id='set_title'>" . $name . "</p>" .               // Set title
          "<div class='category'>" .
-            "<button class='set_info set_info_cat' onclick=\"changeCategory('" . $catId . "')\">" . $catName . "</button>" .  // Set category
-            "<button class='set_info set_info_year' onclick=\"changeYear('" . $year . "')\">" . $year . "</button>" .         // Set year
+            // "<button class='set_info set_info_cat' onclick=\"changeCategory('" . $catId . "')\">" . $catName . "</button>" .  // Set category
+            // "<button class='set_info set_info_year' onclick=\"changeYear('" . $year . "')\">" . $year . "</button>" .         // Set year borde inte göra något :/
          "</div>" .
          "<p id='set_id'>ID: " . $setId . "</p>" .             // Set id
       "</div>" . 

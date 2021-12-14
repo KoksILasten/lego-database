@@ -5,7 +5,7 @@
    }
    catch (Exception $e) {
       // Catch error messages if connection failed
-      $error = $e->getMessage();
+      $error = $e->getMessage(); // vi borde ta hela den här error grejen!
       echo $error;
    }
 ?>

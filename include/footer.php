@@ -4,5 +4,5 @@
 
 <?php
    // Close connection 
-   mysqli_close($connection);    
+   mysqli_close($connection);    //wow vilken funktion
 ?>

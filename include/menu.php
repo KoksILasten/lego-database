@@ -3,6 +3,6 @@
 
     <?php
         // Include the searchbox
-        include 'include/searchbox.php';
+        include 'include/searchbox.php'; //varför ens orka göra en separat fil?
     ?>
 </div>
