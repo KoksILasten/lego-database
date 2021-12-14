@@ -1,4 +1,4 @@
-// Script file containing the hanling of the searchbox
+// Script file containing the hanling of the searchbox INGET VI BEHÖVER BRY OSS OM!!!!
 
 let leaveDropdownActive = false; // Used to start the page with the filter dropdown open
 
