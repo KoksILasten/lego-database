@@ -125,11 +125,14 @@
 
     for ($page = 1; $page <= $numberOfPages; $page++) { //switch page funktionen gissar jag
         // Active button if clicked
+		
+		echo ('<a href="search_result.php?=' . $page . ');
         if ($_GET['page'] == $page) {
-            echo ('<a href="search_result.php' . $smallquery . ' $page=' . $page . '">' . $page . '</a> ');
-        } else {
-            echo ('<a href="search_result.php'. $smallquery . '$page' . $page . '">' . $page . '</a> ');
+            echo (' ">" . $page . "<" ');
         }
+        echo ("<a href='search_result.php?page=".$page."'");
+            if ($_GET["page"]==$page);
+            echo (">" .$page. "</a> ");
     }
 
 		echo "</div>";
