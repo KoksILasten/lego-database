@@ -240,5 +240,3 @@ function getMinifigName($connection, $minifigId) {
    }
    return "(not found)"; // Something went wrong in the search, used for troubleshooting
 }
-
-?>
